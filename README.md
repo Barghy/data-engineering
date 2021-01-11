@@ -41,7 +41,7 @@ This project demonstrates the following skills:
 | ETL              | ETL script properly processes transformations in Python              |
 | Code Quality     | The project shows proper use of documentation                        |
 | Code Quality     | The project code is clean and modular                                |
-| Backlog          | :cross_mark: Bulk insert log files using COPY rather than INSERT     |
+| Backlog          | :cross mark: Bulk insert log files using COPY rather than INSERT     |
 | Backlog          | :cross_mark: Add data quality checks                                 |
 | Backlog          | :cross_mark: Create a dashboard for analytic queries on the database |
 
