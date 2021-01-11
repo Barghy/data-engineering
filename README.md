@@ -33,17 +33,17 @@ This project demonstrates the following skills:
 
 ## Requirements
 
-| Requirement      | Checklist                                                          |
-|------------------|--------------------------------------------------------------------|
-| Table Creation   | Table creation script run without errors                           |
-| Table Creation   | Fact and dimensional tables for a star schema are properly defined |
-| ETL              | ETL script runs without errors                                     |
-| ETL              | ETL script properly processes transformations in Python            |
-| Code Quality     | The project shows proper use of documentation                      |
-| Code Quality     | The project code is clean and modular                              |
-| Backlog          | Bulk insert log files using COPY rather than INSERT                |
-| Backlog          | Add data quality checks                                            |
-| Backlog          | Create a dashboard for analytic queries on the database            |
+| Requirement      | Checklist                                                            |
+|------------------|----------------------------------------------------------------------|
+| Table Creation   | :check_mark: Table creation script run without errors                |
+| Table Creation   | Fact and dimensional tables for a star schema are properly defined   |
+| ETL              | ETL script runs without errors                                       |
+| ETL              | ETL script properly processes transformations in Python              |
+| Code Quality     | The project shows proper use of documentation                        |
+| Code Quality     | The project code is clean and modular                                |
+| Backlog          | :cross_mark: Bulk insert log files using COPY rather than INSERT     |
+| Backlog          | :cross_mark: Add data quality checks                                 |
+| Backlog          | :cross_mark: Create a dashboard for analytic queries on the database |
 
 ## Solution
 
@@ -156,7 +156,7 @@ The fact and dimension tables are defined as below:
 
 ### Packages
 
-`pandas` :panda:
+`pandas` :panda_face:
 
 `psycopg2`
 
