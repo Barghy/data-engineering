@@ -33,17 +33,17 @@ This project demonstrates the following skills:
 
 ## Requirements
 
-| Requirement      | Checklist                                                                                                    |
-|------------------|--------------------------------------------------------------------------------------------------------------|
-| Table Creation   | <span style="color:green">&check;</span>  Table creation script run without errors                           |
-| Table Creation   | <span style="color:green">&check;</span>  Fact and dimensional tables for a star schema are properly defined |
-| ETL              | <span style="color:green">&check;</span>  ETL script runs without errors                                     |
-| ETL              | <span style="color:green">&check;</span>  ETL script properly processes transformations in Python            |
-| Code Quality     | <span style="color:green">&check;</span>  The project shows proper use of documentation                      |
-| Code Quality     | <span style="color:green">&check;</span>  The project code is clean and modular                              |
-| Backlog          | <span style="color:red">&cross;</span>    Bulk insert log files using COPY rather than INSERT                |
-| Backlog          | <span style="color:red">&cross;</span>    Add data quality checks                                            |
-| Backlog          | <span style="color:red">&cross;</span>    Create a dashboard for analytic queries on the database            |
+| Requirement      | Checklist                                                          |
+|------------------|--------------------------------------------------------------------|
+| Table Creation   | Table creation script run without errors                           |
+| Table Creation   | Fact and dimensional tables for a star schema are properly defined |
+| ETL              | ETL script runs without errors                                     |
+| ETL              | ETL script properly processes transformations in Python            |
+| Code Quality     | The project shows proper use of documentation                      |
+| Code Quality     | The project code is clean and modular                              |
+| Backlog          | Bulk insert log files using COPY rather than INSERT                |
+| Backlog          | Add data quality checks                                            |
+| Backlog          | Create a dashboard for analytic queries on the database            |
 
 ## Solution
 
@@ -101,32 +101,39 @@ The fact and dimension tables are defined as below:
 ### File Structure
 
 ```
-:package: 01-data-modelling-with-postgres
- ┣ :page_facing_up: README.md
+📦 01-data-modelling-with-postgres
+ ┣ README.md
  ┣ 📂data
  ┃ ┣ 📂log_data
  ┃ ┗ 📂song_data
- ┣ 📜sql_queries.py
- ┣ 📜create_tables.py
- ┣ 📜etl.ipynb
- ┣ 📜etl.py
- ┗ 📜test.ipynb
+ ┣ sql_queries.py
+ ┣ create_tables.py
+ ┣ etl.ipynb
+ ┣ etl.py
+ ┗ test.ipynb
 ```
 
 **data**
-- log_data: each file is in json format and contains activity logs from the music streaming app. The files are partionioned by uear and month.
-- song_data: each file is in json format and contains metadata about a song and the artist of that song. The files are partitioned by the first three letters of each song's track ID.
+
+`log_data` each file is in json format and contains activity logs from the music streaming app. The files are partionioned by uear and month.
+
+`song_data` each file is in json format and contains metadata about a song and the artist of that song. The files are partitioned by the first three letters of each song's track ID.
 
 **tables**
-- sql_queries: contains the sql which defines the DROP, CREATE and INSERT queries for every table. This is used in create_tables.py, etl.ipynb and etl.py.
-- create_tables: drops and creates the tables in the database. This must always be run before etl.py.
+
+`sql_queries` contains the sql which defines the DROP, CREATE and INSERT queries for every table. This is used in create_tables.py, etl.ipynb and etl.py.
+
+`create_tables` drops and creates the tables in the database. This must always be run before etl.py.
 
 **etl**
-- etl.ipynb: reads and processes a single file from song_data and log_data to document detailed information about the ETL process.
-- etl.py: reads and processes files from song_data and log_data and loads them into your tables.
+
+`etl.ipynb` reads and processes a single file from song_data and log_data to document detailed information about the ETL process.
+
+`etl.py` reads and processes files from song_data and log_data and loads them into your tables.
 
 **test**
-- test.ipynb: displays the first 5 rows of each table to check the database has been created correctly.
+
+`test.ipynb` displays the first 5 rows of each table to check the database has been created correctly.
 
 ### Running the Solution
 
@@ -139,17 +146,23 @@ The fact and dimension tables are defined as below:
 
 ### Tools
 
-- sql (postgresql)
-- python :snake:
-- vscode
-- terminal (linux) :penguin:
+`sql (postgresql)`
+
+`python` :snake:
+
+`vscode`
+
+`terminal (linux)` :penguin:
 
 ### Packages
 
-- pandas
-- psycopg2
-- os
-- glob
+`pandas` :panda:
+
+`psycopg2`
+
+`os`
+
+`glob`
 
 ## Contact
 
