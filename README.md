@@ -35,7 +35,7 @@ This project demonstrates the following skills:
 
 | Requirement      | Checklist                                                                             |
 |------------------|---------------------------------------------------------------------------------------|
-| Table Creation   | :white_check_mark: Table creation script run without errors                           |
+| Table Creation   | :heavy_check_mark: Table creation script run without errors                           |
 | Table Creation   | :white_check_mark: Fact and dimensional tables for a star schema are properly defined |
 | ETL              | :white_check_mark: script runs without errors                                         |
 | ETL              | :white_check_mark: ETL script properly processes transformations in Python            |
