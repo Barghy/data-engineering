@@ -6,6 +6,14 @@ from sql_queries import *
 
 
 def process_song_file(cur, filepath):
+    """
+    - Reads song data in each file, extract the relevant columns
+    - Inserts the data into the songs and artist tables
+    Args:
+        cur (psycopg2.cursor()): cursor for the database
+        filepath (str): filepath for the file
+    """
+
     # open song file
     df = pd.read_json(filepath, lines=True)
 
@@ -19,6 +27,16 @@ def process_song_file(cur, filepath):
 
 
 def process_log_file(cur, filepath):
+    """
+    - Reads the data from the log file filtering for Next Song actions only
+    - Converts the timestamp into the relevant time columns
+    - Inserts the transformed datetime data into the time table
+    - Inserts relevant columns into user and songplay tables
+    Args:
+        cur (psycopg2.cursor()): cursor for the database
+        filepath (str): filepath for the file
+    """
+
     # open log file
     df = pd.read_json(filepath, lines=True)
 
@@ -64,6 +82,17 @@ def process_log_file(cur, filepath):
 
 
 def process_data(cur, conn, filepath, func):
+    """
+    - Iterates through all the files found in the director and processes them
+    Args:
+        cur (psycopg2.cursor()): cursor for the database
+        conn (psycopg2.connect()): connection to the database
+        filepath (str): filepath for the directory
+        func (python function): function which processes each file
+    Returns:
+        Number of current file being processed / total files in directory
+    """
+
     # get all files matching extension from directory
     all_files = []
     for root, dirs, files in os.walk(filepath):
@@ -83,7 +112,13 @@ def process_data(cur, conn, filepath, func):
 
 
 def main():
-    conn = psycopg2.connect("host=localhost dbname=sparkifydb user=postgres password=admin")
+    """
+    - Function used to extract and transform the song_data and log_data to load into postgresql database        
+    Usage:
+        python etl.py
+    """
+
+    conn = psycopg2.connect("host=127.0.0.1 dbname=sparkifydb user=student password=password")
     cur = conn.cursor()
 
     process_data(cur, conn, filepath='data/song_data/', func=process_song_file)

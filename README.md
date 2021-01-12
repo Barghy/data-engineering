@@ -54,11 +54,11 @@ The fact and dimension tables are defined as below:
 | FACT **songplays**     |             |
 |------------------------|-------------|
 | songplay_id `PK`       | `serial`    |
-| start_time             | `timestamp` |
-| user_id                | `int`       |
+| start_time `FK`        | `timestamp` |
+| user_id `FK`           | `int`       |
 | level                  | `text`      |
-| song_id                | `text`      |
-| artist_id              | `text`      |
+| song_id `FK`           | `text`      |
+| artist_id `FK`         | `text`      |
 | session_id             | `int`       |
 | location               | `text`      |
 | user_agent             | `text`      |
@@ -76,7 +76,7 @@ The fact and dimension tables are defined as below:
 |------------------------|-------------|
 | song_id `PK`           | `text`      |
 | title                  | `text`      |
-| artist_id              | `text`      |
+| artist_id `FK`         | `text`      |
 | year                   | `int`       |
 | duration               | `float`     |
 

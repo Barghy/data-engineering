@@ -12,11 +12,11 @@ songplay_table_create = ("""
     CREATE TABLE IF NOT EXISTS songplays
     (
         songplay_id SERIAL PRIMARY KEY,
-        start_time TIMESTAMP,
-        user_id INT,
+        start_time TIMESTAMP REFERENCES time(start_time),
+        user_id INT NOT NULL REFERENCES users(user_id),
         level TEXT,
-        song_id TEXT,
-        artist_id TEXT,
+        song_id TEXT REFERENCES songs(song_id),
+        artist_id TEXT REFERENCES artists(artists_id),
         session_id INT,
         location TEXT,
         user_agent TEXT
@@ -27,8 +27,8 @@ user_table_create = ("""
     CREATE TABLE IF NOT EXISTS users
     (
         user_id INT PRIMARY KEY,
-        first_name TEXT,
-        last_name TEXT,
+        first_name TEXT NOT NULL,
+        last_name TEXT NOT NULL,
         gender TEXT,
         level TEXT)
 """)
@@ -37,10 +37,10 @@ song_table_create = ("""
     CREATE TABLE IF NOT EXISTS songs
     (
         song_id TEXT PRIMARY KEY,
-        title TEXT,
-        artist_id TEXT,
+        title TEXT NOT NULL,
+        artist_id TEXT NOT NULL,
         year INT,
-        duration FLOAT
+        duration FLOAT NOT NULL
     )
 """)
 
@@ -48,7 +48,7 @@ artist_table_create = ("""
     CREATE TABLE IF NOT EXISTS artists 
     (
         artists_id TEXT PRIMARY KEY,
-        name TEXT,
+        name TEXT NOT NULL,
         location TEXT,
         latitude FLOAT,
         longitude FLOAT
@@ -81,7 +81,7 @@ user_table_insert = ("""
     INSERT INTO users
     (user_id, first_name, last_name, gender, level)
     VALUES (%s, %s, %s, %s, %s)
-    ON CONFLICT (user_id) DO NOTHING;
+    ON CONFLICT (user_id) DO UPDATE SET level = EXCLUDED.level;
 """)
 
 song_table_insert = ("""
