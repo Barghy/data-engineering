@@ -76,7 +76,7 @@ The fact and dimension tables are defined as below:
 |------------------------|-------------|
 | song_id `PK`           | `text`      |
 | title                  | `text`      |
-| artist_id `FK`         | `text`      |
+| artist_id              | `text`      |
 | year                   | `int`       |
 | duration               | `float`     |
 
