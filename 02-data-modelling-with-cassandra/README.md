@@ -128,7 +128,7 @@ Each table is designed for a particular query to provide low latency and high pe
 
 `glob`
 
-`csv` 
+`csv` :memo: 
 
 ## Contact
 
