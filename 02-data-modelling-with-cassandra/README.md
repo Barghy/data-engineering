@@ -43,8 +43,6 @@ This project demonstrates the following skills:
 | Primary keys            | :heavy_check_mark: The PRIMARY key for each table should uniquely identify each row in each of the tables             |
 | Presentation            | :heavy_check_mark: Student provides responses to the questions                                                        |
 | Presentation            | :heavy_check_mark: Students notebook code should be clean and modular                                                 |
-| Backlog                 | :x: You can add description of your PRIMARY KEY and how you arrived at the decision to use each for the query         |
-| Backlog                 | :x: Use Panda dataframes to add columns to your query output                                                          |
 
 ## Solution
 
