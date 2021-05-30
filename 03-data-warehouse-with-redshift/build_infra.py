@@ -6,6 +6,9 @@ import time
 from botocore.exceptions import ClientError
 
 def init_config():
+    """
+        Description: sets the parameters for the cloud infrastructure to be created from the configuration file.
+    """
     global KEY, SECRET, REGION, DWH_IAM_ROLE_NAME, DWH_CLUSTER_TYPE, DWH_NODE_TYPE, DWH_NUM_NODES, DWH_DB, DWH_DB_USER, DWH_CLUSTER_IDENTIFIER, DWH_DB_PASSWORD
     print('-- INITIALIZING CONFIG --')
 
@@ -31,6 +34,9 @@ def init_config():
         print(e)
 
 def create_clients():
+    """
+        Description: creates the clients for the services to be created based on the region and credentials in the config file.
+    """
     global ec2, s3, iam, redshift
     print('-- CREATING CLIENTS --')
 
@@ -76,6 +82,9 @@ def create_clients():
     print('-- CLIENTS CREATED --')
 
 def create_role():
+    """
+        Description: creates an IAM role and attached the require policies for the cluster.
+    """
     global roleArn
     print("-- CREATING ROLE --") 
     
@@ -110,6 +119,9 @@ def create_role():
             print(e)
 
 def create_cluster():
+    """
+        Description: creates a redshift cluster from the preset configurations and credentials.
+    """
     global ClusterIdentifier
 
     try:
@@ -131,7 +143,9 @@ def create_cluster():
         print(e)
 
 def check_cluster():
-    
+    """
+        Description: checks the status of the cluster and then saves the endpoint and role arn upon creation.
+    """    
     global DWH_ENDPOINT
     global DWH_ROLE_ARN
     
@@ -148,7 +162,9 @@ def check_cluster():
         print('-- CLUSTER CREATED --')
 
 def main():
-    
+    """
+        Description: builds the cloud infrastructure required from the config file.
+    """    
     print('-- BUILDING INFRASTRUCTURE --')
     init_config()
 

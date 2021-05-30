@@ -3,18 +3,35 @@ import psycopg2
 from sql_queries import create_table_queries, drop_table_queries
 
 def drop_tables(cur, conn):
+    """
+        Description: drops any tables if they already exist in the data warehouse.
+
+        Parameters:
+            cur     : the psycopg cursor
+            conn    : the connection to the data warehouse
+    """    
     for query in drop_table_queries:
         cur.execute(query)
         conn.commit()
 
 
 def create_tables(cur, conn):
+    """
+        Description: creates the tables needed in the erd schema.
+
+        Parameters:
+            cur     : the psycopg cursor
+            conn    : the connection to the data warehouse
+    """ 
     for query in create_table_queries:
         cur.execute(query)
         conn.commit()
 
 
 def main():
+    """
+        Description: creates the requires tables after connecting and dropping any that exist.
+    """ 
     config = configparser.ConfigParser()
     config.read('dwh.cfg')
     print('-- CREATING TABLES --')

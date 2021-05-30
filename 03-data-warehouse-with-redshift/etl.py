@@ -5,11 +5,25 @@ from sql_queries import copy_table_queries, insert_table_queries, validate_stagi
 
 
 def load_staging_tables(cur, conn):
+    """
+        Description: copies data from s3 to staging tables.
+
+        Parameters:
+            cur     : the psycopg cursor
+            conn    : the connection to the data warehouse
+    """    
     for query in copy_table_queries:
         cur.execute(query)
         conn.commit()
 
 def validate_staging(cur, conn):
+    """
+        Description: validates data has been inserted into the final tables by row count.
+
+        Parameters:
+            cur     : the psycopg cursor
+            conn    : the connection to the data warehouse
+    """    
     for query in validate_staging_queries:
         cur.execute(query)
         table = re.search('FROM (.*);',query)
@@ -18,11 +32,25 @@ def validate_staging(cur, conn):
         conn.commit()
         
 def insert_tables(cur, conn):
+    """
+        Description: inserts data from staging into the final tables.
+
+        Parameters:
+            cur     : the psycopg cursor
+            conn    : the connection to the data warehouse
+    """    
     for query in insert_table_queries:
         cur.execute(query)
         conn.commit()
 
 def validate_insert(cur, conn):
+    """
+        Description: validates data has been inserted into the final tables by row count.
+
+        Parameters:
+            cur     : the psycopg cursor
+            conn    : the connection to the data warehouse
+    """    
     for query in validate_insert_queries:
         cur.execute(query)
         table = re.search('FROM (.*);',query)
@@ -32,6 +60,9 @@ def validate_insert(cur, conn):
         
 
 def main():
+    """
+        Description: copies data from s3 to staging tables, before inserting into tables defined in the erd.
+    """    
     config = configparser.ConfigParser()
     config.read('dwh.cfg')
     print('-- RUNNING ETL--')

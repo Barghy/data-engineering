@@ -6,6 +6,7 @@ import configparser
 config = configparser.ConfigParser()
 config.read('dwh.cfg')
 
+
 # DROP TABLES
 
 staging_events_table_drop = "DROP TABLE IF EXISTS staging_events"
@@ -16,6 +17,7 @@ song_table_drop = "DROP TABLE IF EXISTS songs"
 artist_table_drop = "DROP TABLE IF EXISTS artists"
 time_table_drop = "DROP TABLE IF EXISTS time"
 
+
 # CREATE TABLES
 
 staging_events_table_create= ("""
@@ -24,35 +26,35 @@ staging_events_table_create= ("""
         auth                VARCHAR,
         firstName           VARCHAR,
         gender              VARCHAR,
-        itemInSession       INTEGER,
+        itemInSession       VARCHAR,
         lastName            VARCHAR,
-        length              FLOAT,
+        length              VARCHAR,
         level               VARCHAR,
         location            VARCHAR,
         method              VARCHAR,
         page                VARCHAR,
-        registration        FLOAT,
-        sessionId           INTEGER,
+        registration        VARCHAR,
+        sessionId           VARCHAR,
         song                VARCHAR,
-        status              INTEGER,
-        ts                  TIMESTAMP,
+        status              VARCHAR,
+        ts                  VARCHAR,
         userAgent           VARCHAR,
-        userId              INTEGER 
+        userId              VARCHAR 
     )
 """)
 
 staging_songs_table_create = ("""
     CREATE TABLE staging_songs(
-        num_songs           INTEGER,
+        num_songs           VARCHAR,
         artist_id           VARCHAR,
-        artist_latitude     FLOAT,
-        artist_longitude    FLOAT,
+        artist_latitude     VARCHAR,
+        artist_longitude    VARCHAR,
         artist_location     VARCHAR,
         artist_name         VARCHAR,
         song_id             VARCHAR,
         title               VARCHAR,
-        duration            FLOAT,
-        year                INTEGER
+        duration            VARCHAR,
+        year                VARCHAR
     )
 """)
 
@@ -117,6 +119,7 @@ songplay_table_create = ("""
     )
 """)
 
+
 # STAGING TABLES
 
 staging_events_copy = ("""
@@ -140,6 +143,8 @@ staging_songs_copy = ("""
 """).format(s3_bucket=config['S3']['SONG_DATA'], 
             role_arn=config['IAM_ROLE']['ARN'],
             region=config['CLUSTER']['REGION'])
+
+
 
 # FINAL TABLES
 
@@ -205,7 +210,9 @@ time_table_insert = ("""
     FROM songplay;
 """)
 
+
 # STAGING TABLE VALIDATION
+
 staging_events_rows = ("""
     SELECT COUNT(*)
     FROM staging_events;
@@ -216,7 +223,9 @@ staging_songs_rows = ("""
     FROM staging_songs;
 """)
 
+
 # FINAL TABLE VALIDATION
+
 songplay_rows = ("""
     SELECT COUNT(*)
     FROM songplay;
@@ -241,7 +250,6 @@ time_rows = ("""
     SELECT COUNT(*)
     FROM time;
 """)
-
 
 
 # QUERY LISTS
