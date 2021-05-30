@@ -26,35 +26,35 @@ staging_events_table_create= ("""
         auth                VARCHAR,
         firstName           VARCHAR,
         gender              VARCHAR,
-        itemInSession       VARCHAR,
+        itemInSession       INTEGER,
         lastName            VARCHAR,
-        length              VARCHAR,
+        length              FLOAT,
         level               VARCHAR,
         location            VARCHAR,
         method              VARCHAR,
         page                VARCHAR,
-        registration        VARCHAR,
-        sessionId           VARCHAR,
+        registration        FLOAT,
+        sessionId           INTEGER,
         song                VARCHAR,
-        status              VARCHAR,
-        ts                  VARCHAR,
+        status              INTEGER,
+        ts                  TIMESTAMP,
         userAgent           VARCHAR,
-        userId              VARCHAR 
+        userId              INTEGER 
     )
 """)
 
 staging_songs_table_create = ("""
     CREATE TABLE staging_songs(
-        num_songs           VARCHAR,
+        num_songs           INTEGER,
         artist_id           VARCHAR,
-        artist_latitude     VARCHAR,
-        artist_longitude    VARCHAR,
+        artist_latitude     FLOAT,
+        artist_longitude    FLOAT,
         artist_location     VARCHAR,
         artist_name         VARCHAR,
         song_id             VARCHAR,
         title               VARCHAR,
-        duration            VARCHAR,
-        year                VARCHAR
+        duration            FLOAT,
+        year                INTEGER
     )
 """)
 
