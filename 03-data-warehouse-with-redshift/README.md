@@ -78,6 +78,8 @@ s3://udacity-dend/log_json_path.json
 
 ### Data Model
 
+![ERD](https://github.com/Barghy/data-engineering/blob/main/03-data-warehouse-with-redshift/img/03-data-warehouse-with-redshift-erd.png)
+
 The staging, fact and dimension tables are defined as below.
 
 | STAGING **staging_events** |             |
@@ -193,7 +195,7 @@ The staging, fact and dimension tables are defined as below.
 
 **1. config**
 </br>
-You will need to input your own configurations (*****) in the `dwh.cfg` file below to run the solution. This file must be placed in the project root folder as displayed in the [file structure](#file-structure) section of this README.
+You will need to input your own configurations `*****` in the `dwh.cfg` file below to run the solution. This file must be placed in the project root folder as displayed in the [file structure](#file-structure) section of this README.
 </br>
 
 ```
